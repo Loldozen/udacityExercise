@@ -41,7 +41,7 @@ jobs:
             - "fa:9f:92:9c:b5:be:c9:73:06:16:2a:e6:cc:a6:9c:62"
       - run: 
           name: Install Ansible
-          command: apk add --update ansible
+          command: yum update && yum install epel-release && yum install ansible
 
       - run: 
           name: Run playbook and configure server

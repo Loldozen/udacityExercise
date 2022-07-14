@@ -56,8 +56,16 @@ jobs:
             pip install ansible
 
       - run: 
+          name: Update inventory file
+          command: |
+            echo "[all]" > inventor.txt && \
+            aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' \
+            --output text >> inventor.txt 
+
+      - run: 
           name: Run playbook and configure server
-          command: ansible-playbook main.yml -i inventory.txt 
+          command: ansible-playbook main.yml -i inventor.txt
+      - destroy_environment 
   smoke_test:
     docker: 
       - image: cimg/base:stable

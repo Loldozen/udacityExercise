@@ -71,6 +71,9 @@ jobs:
       - run: 
           name: Run playbook and configure server
           command: ansible-playbook main.yml -i inventor.txt
+      - run: 
+          name: Fail silently
+          command: exit 1
       - destroy_environment 
   smoke_test:
     docker: 
@@ -105,4 +108,4 @@ workflows:
       #- say-hello
       - create_infrastructure
       - configure_infrastructure
-      - smoke_test_fail
+      #- smoke_test_fail

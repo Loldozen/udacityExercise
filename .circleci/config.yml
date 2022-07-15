@@ -55,17 +55,11 @@ jobs:
           name: Install Ansible
           command: |
             pip install ansible
-      - run:
-          name: Install zip/unzip
-          command: |
-            sudo apt update && sudo apt install zip && sudo apt install unzip 
-      - run:
-          name: Install AWS CLI
-          command: |
-            sudo apt update && \
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-            unzip awscliv2.zip && \
-            sudo ./aws/install
+      
+      - run: 
+          name: Instal AWS CLI
+          command: | 
+            pip --no-cache-dir install --upgrade awscli
 
 
       - run: 

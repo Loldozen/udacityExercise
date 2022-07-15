@@ -56,6 +56,10 @@ jobs:
           command: |
             pip install ansible
       - run:
+          name: Install zip/unzip
+          command: |
+            sudo apt update && sudo apt install zip && sudo apt install unzip 
+      - run:
           name: Install AWS CLI
           command: |
             sudo apt update && \
